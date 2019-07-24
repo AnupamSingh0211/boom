@@ -3,11 +3,15 @@ package com.hala.boom
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
+import android.graphics.LinearGradient
 import android.graphics.Paint
+import android.graphics.Shader.TileMode
 import android.os.Build
 import android.support.annotation.RequiresApi
 import android.util.AttributeSet
 import android.view.View
+
+
 
 
 /**
@@ -40,7 +44,7 @@ class BoomView : View {
 
 
     init {
-        blockHeight = (CodeUtils.getHeightPixels(context) / 3).toFloat()
+        blockHeight = (CodeUtils.getHeightPixels(context) ).toFloat()
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -51,19 +55,25 @@ class BoomView : View {
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
 
-        paint.setColor(Color.RED);
-        paint.setStrokeWidth(3.0f);
-        canvas?.drawRect(0.0f, 0.0f, CodeUtils.getWidthPixels(context).toFloat(), blockHeight, paint);
+//        paint.setColor(Color.RED);
+//        paint.setStrokeWidth(3.0f);
+//        canvas?.drawRect(0.0f, 0.0f, CodeUtils.getWidthPixels(context).toFloat(), blockHeight, paint);
+
+        val shader = LinearGradient(0f, 0f, 0f, blockHeight, Color.BLACK, Color.RED, TileMode.CLAMP)
+        val paintRed = Paint()
+        paintRed.shader = shader
+        canvas?.drawRect(0.0f, 0.0f, CodeUtils.getWidthPixels(context).toFloat(), blockHeight, paintRed);
 
 
-        paint.setColor(Color.GREEN);
-        paint.setStrokeWidth(3.0f);
-        canvas?.drawRect(0.0f, 2 * blockHeight, CodeUtils.getWidthPixels(context).toFloat(), blockHeight, paint)
 
-
-        paint.setColor(Color.BLUE);
-        paint.setStrokeWidth(3.0f);
-        canvas?.drawRect(0.0f, 3 * blockHeight, CodeUtils.getWidthPixels(context).toFloat(), 2 * blockHeight, paint);
+//        paint.setColor(Color.GREEN);
+//        paint.setStrokeWidth(3.0f);
+//        canvas?.drawRect(0.0f, 2 * blockHeight, CodeUtils.getWidthPixels(context).toFloat(), blockHeight, paint)
+//
+//
+//        paint.setColor(Color.BLUE);
+//        paint.setStrokeWidth(3.0f);
+//        canvas?.drawRect(0.0f, 3 * blockHeight, CodeUtils.getWidthPixels(context).toFloat(), 2 * blockHeight, paint);
 
 
     }
