@@ -12,6 +12,5 @@ class MainActivity : AppCompatActivity() {
         boomView = BoomView(this)
         boomView.setBackgroundColor(Color.WHITE)
         setContentView(boomView)
-
     }
 }
