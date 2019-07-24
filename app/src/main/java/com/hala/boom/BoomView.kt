@@ -12,8 +12,6 @@ import android.util.AttributeSet
 import android.view.View
 
 
-
-
 /**
  * @author Anupam Singh
  * @version 1.0
@@ -25,6 +23,7 @@ class BoomView : View {
 
     var paint = Paint()
     var blockHeight: Float = 0.0f
+    var startingHeight = 0.0f
 
     constructor(context: Context) : super(context)
 
@@ -44,7 +43,7 @@ class BoomView : View {
 
 
     init {
-        blockHeight = (CodeUtils.getHeightPixels(context) ).toFloat()
+        blockHeight = (CodeUtils.getHeightPixels(context)).toFloat()
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -59,11 +58,17 @@ class BoomView : View {
 //        paint.setStrokeWidth(3.0f);
 //        canvas?.drawRect(0.0f, 0.0f, CodeUtils.getWidthPixels(context).toFloat(), blockHeight, paint);
 
-        val shader = LinearGradient(0f, 0f, 0f, blockHeight, Color.BLACK, Color.RED, TileMode.CLAMP)
+        if (startingHeight >= blockHeight) {
+            startingHeight = 0.0f
+        }
+        else
+            startingHeight = startingHeight + 50.0f
+
+
+        val shader = LinearGradient(0f, startingHeight, startingHeight-100, blockHeight, Color.BLACK, Color.RED, TileMode.CLAMP)
         val paintRed = Paint()
         paintRed.shader = shader
         canvas?.drawRect(0.0f, 0.0f, CodeUtils.getWidthPixels(context).toFloat(), blockHeight, paintRed);
-
 
 
 //        paint.setColor(Color.GREEN);
