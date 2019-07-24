@@ -3,6 +3,7 @@ package com.hala.boom
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
+import android.graphics.Color.BLACK
 import android.graphics.LinearGradient
 import android.graphics.Paint
 import android.graphics.Shader.TileMode
@@ -10,6 +11,7 @@ import android.os.Build
 import android.support.annotation.RequiresApi
 import android.util.AttributeSet
 import android.view.View
+import kotlin.random.Random
 
 
 /**
@@ -18,12 +20,14 @@ import android.view.View
  * @since 2019-07-24
  */
 
-class BoomView : View {
+class LinearBoomView : View {
 
 
     var paint = Paint()
     var blockHeight: Float = 0.0f
     var startingHeight = 0.0f
+    var colorArray: IntArray
+    var currentColor: Int
 
     constructor(context: Context) : super(context)
 
@@ -44,6 +48,8 @@ class BoomView : View {
 
     init {
         blockHeight = (CodeUtils.getHeightPixels(context)).toFloat()
+        colorArray = intArrayOf(Color.RED, Color.GREEN, Color.BLUE, Color.CYAN, Color.MAGENTA, Color.YELLOW)
+        currentColor = colorArray[0]
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -58,14 +64,16 @@ class BoomView : View {
 //        paint.setStrokeWidth(3.0f);
 //        canvas?.drawRect(0.0f, 0.0f, CodeUtils.getWidthPixels(context).toFloat(), blockHeight, paint);
 
+
         if (startingHeight >= blockHeight) {
             startingHeight = 0.0f
-        }
-        else
-            startingHeight = startingHeight + 50.0f
+            currentColor = colorArray[Random.nextInt(0, 5)]
+
+        } else
+            startingHeight = startingHeight + 40.0f
 
 
-        val shader = LinearGradient(0f, startingHeight, startingHeight-100, blockHeight, Color.BLACK, Color.RED, TileMode.CLAMP)
+        val shader = LinearGradient(0f, startingHeight-200, 0f, blockHeight, BLACK, currentColor, TileMode.CLAMP)
         val paintRed = Paint()
         paintRed.shader = shader
         canvas?.drawRect(0.0f, 0.0f, CodeUtils.getWidthPixels(context).toFloat(), blockHeight, paintRed);
