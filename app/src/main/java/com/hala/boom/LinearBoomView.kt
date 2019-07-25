@@ -60,9 +60,9 @@ class LinearBoomView : View {
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
 
-//        paint.setColor(Color.RED);
-//        paint.setStrokeWidth(3.0f);
-//        canvas?.drawRect(0.0f, 0.0f, CodeUtils.getWidthPixels(context).toFloat(), blockHeight, paint);
+//        mPaint.setColor(Color.RED);
+//        mPaint.setStrokeWidth(3.0f);
+//        canvas?.drawRect(0.0f, 0.0f, CodeUtils.getWidthPixels(context).toFloat(), blockHeight, mPaint);
 
 
         if (startingHeight >= blockHeight) {
@@ -79,14 +79,14 @@ class LinearBoomView : View {
         canvas?.drawRect(0.0f, 0.0f, CodeUtils.getWidthPixels(context).toFloat(), blockHeight, paintRed);
 
 
-//        paint.setColor(Color.GREEN);
-//        paint.setStrokeWidth(3.0f);
-//        canvas?.drawRect(0.0f, 2 * blockHeight, CodeUtils.getWidthPixels(context).toFloat(), blockHeight, paint)
+//        mPaint.setColor(Color.GREEN);
+//        mPaint.setStrokeWidth(3.0f);
+//        canvas?.drawRect(0.0f, 2 * blockHeight, CodeUtils.getWidthPixels(context).toFloat(), blockHeight, mPaint)
 //
 //
-//        paint.setColor(Color.BLUE);
-//        paint.setStrokeWidth(3.0f);
-//        canvas?.drawRect(0.0f, 3 * blockHeight, CodeUtils.getWidthPixels(context).toFloat(), 2 * blockHeight, paint);
+//        mPaint.setColor(Color.BLUE);
+//        mPaint.setStrokeWidth(3.0f);
+//        canvas?.drawRect(0.0f, 3 * blockHeight, CodeUtils.getWidthPixels(context).toFloat(), 2 * blockHeight, mPaint);
 
 
     }
