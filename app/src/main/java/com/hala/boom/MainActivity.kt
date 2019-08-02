@@ -8,12 +8,12 @@ import android.support.v7.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var boomView: CircularBoomView
+    lateinit var boomView: CircularView
     var countDownTimer: CountDownTimer? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        boomView = CircularBoomView(this)
-        boomView.setBackgroundColor(Color.WHITE)
+        boomView = CircularView(this)
+        boomView.setBackgroundColor(Color.BLACK)
         setContentView(boomView)
         usingCountDownTimer()
 
