@@ -31,6 +31,8 @@ class CircularView : View {
     val paintRed = Paint()
     var randomX: Int
     var randomY: Int
+    var intensityVal: Float = 0.2f
+    var currentRange: Int = 10
 
     constructor(context: Context) : super(context)
 
@@ -93,9 +95,10 @@ class CircularView : View {
 
             randomX = getRandomXValue()
             randomY = getRandomYValue()
+            currentRange = Math.max((100.0f * intensityVal).toInt(),6)
 
         } else
-            startingHeight = startingHeight + 10.0f
+            startingHeight = startingHeight + currentRange
 
 
 ////
@@ -111,7 +114,6 @@ class CircularView : View {
         paintRed.shader = shader
 
         canvas?.drawCircle(randomX.toFloat(), randomY.toFloat(), startingHeight, paintRed)
-
 
 
 //        shader1 = RadialGradient(
@@ -130,6 +132,11 @@ class CircularView : View {
 //        canvas?.drawCircle(randomY.toFloat()-20.0f, randomX.toFloat(), startingHeight, mPaint)
 
 
+    }
+
+    fun setIntensity(intensity: Float) {
+        intensityVal = intensity
+        invalidate()
     }
 
 }

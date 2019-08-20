@@ -112,7 +112,7 @@ class MainActivity : AppCompatActivity() {
             override fun onWaveFormDataCapture(visualizer: Visualizer, waveform: ByteArray, samplingRate: Int) {
                 intensity = (waveform[0].toFloat() + 128f) / 256
                 Log.d("vis", intensity.toString())
-                boomView.invalidate()
+                boomView.setIntensity(intensity)
             }
 
             override fun onFftDataCapture(visualizer: Visualizer, fft: ByteArray, samplingRate: Int) {
