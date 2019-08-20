@@ -4,6 +4,7 @@
           package="com.hala.boom">
 
     <dist:module dist:instant="true"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
 
     <application
             android:allowBackup="true"
